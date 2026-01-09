@@ -7,6 +7,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 5001
+# Make startup script executable
+RUN chmod +x start.sh
 
-CMD ["python", "app.py"]
+# Expose ports for both dev (5001) and prod (80)
+EXPOSE 5001 80
+
+CMD ["./start.sh"]

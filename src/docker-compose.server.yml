@@ -2,7 +2,9 @@ services:
   web:
     image: ghcr.io/${DOCKER_GITHUB_USERNAME}/awsome-recipe-cookbook:latest
     ports:
-      - "5001:5001"
+      - "80:80"
+    environment:
+      - FLASK_ENV=production
     env_file:
       - .env
     restart: unless-stopped
