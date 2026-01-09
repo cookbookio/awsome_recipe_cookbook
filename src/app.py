@@ -240,6 +240,7 @@ Step 8: Serve immediately with the pan sauce, accompanied by rice or vegetables.
 
 @app.route('/')
 def home():
+    print 'Route invoked: GET /'
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute('SELECT id, title, time_minutes, price, link FROM recipes')
@@ -268,6 +269,7 @@ def home():
 
 @app.route('/recipes/<int:id>/')
 def recipe_detail(id):
+    print 'Route invoked: GET /recipes/<int:id>/'
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute('SELECT id, title, time_minutes, price, link, description FROM recipes WHERE id = ' + str(id))
@@ -302,6 +304,7 @@ def recipe_detail(id):
 
 @app.route('/api', methods=['GET'])
 def api_overview():
+    print 'Route invoked: GET /api'
     routes = {
         'create_user_url': 'http://localhost:3000/api/user/create/',
         'current_user_url': 'http://localhost:3000/api/user/me/',
@@ -318,6 +321,7 @@ def api_overview():
 
 @app.route('/api/user/create/', methods=['POST'])
 def user_create():
+    print 'Route invoked: POST /api/user/create/'
     data = request.get_json()
     email = data.get('email')
     password = data.get('password')
@@ -340,6 +344,7 @@ def user_create():
 
 @app.route('/api/user/me/', methods=['GET'])
 def user_me_retrieve():
+    print 'Route invoked: GET /api/user/me/'
     return jsonify({
         'email': 'user@example.com',
         'name': 'Example User'
@@ -347,6 +352,7 @@ def user_me_retrieve():
 
 @app.route('/api/user/me/', methods=['PUT'])
 def user_me_update():
+    print 'Route invoked: PUT /api/user/me/'
     data = request.get_json()
     email = data.get('email')
     name = data.get('name')
@@ -359,15 +365,16 @@ def user_me_update():
 
 @app.route('/api/user/me/', methods=['PATCH'])
 def user_me_partial_update():
+    print 'Route invoked: PATCH /api/user/me/'
     data = request.get_json()
 
     response = {}
-    if 'email' in data:
+    if data.has_key('email'):
         response['email'] = data['email']
     else:
         response['email'] = 'user@example.com'
 
-    if 'name' in data:
+    if data.has_key('name'):
         response['name'] = data['name']
     else:
         response['name'] = 'Example User'
@@ -376,6 +383,7 @@ def user_me_partial_update():
 
 @app.route('/api/user/token/', methods=['POST'])
 def user_token_create():
+    print 'Route invoked: POST /api/user/token/'
     data = request.get_json()
     email = data.get('email')
     password = data.get('password')
@@ -387,6 +395,7 @@ def user_token_create():
 
 @app.route('/api/recipe/recipes/', methods=['GET'])
 def recipe_recipes_list():
+    print 'Route invoked: GET /api/recipe/recipes/'
     ingredients = request.args.get('ingredients')
     tags = request.args.get('tags')
 
@@ -426,6 +435,7 @@ def recipe_recipes_list():
 
 @app.route('/api/recipe/recipes/', methods=['POST'])
 def recipe_recipes_create():
+    print 'Route invoked: POST /api/recipe/recipes/'
     data = request.get_json()
 
     return jsonify({
@@ -441,6 +451,7 @@ def recipe_recipes_create():
 
 @app.route('/api/recipe/recipes/<int:id>/', methods=['GET'])
 def recipe_recipes_retrieve(id):
+    print 'Route invoked: GET /api/recipe/recipes/<int:id>/'
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute('SELECT id, title, time_minutes, price, link, description FROM recipes WHERE id = ' + str(id))
@@ -473,6 +484,7 @@ def recipe_recipes_retrieve(id):
 
 @app.route('/api/recipe/recipes/<int:id>/', methods=['PUT'])
 def recipe_recipes_update(id):
+    print 'Route invoked: PUT /api/recipe/recipes/<int:id>/'
     data = request.get_json()
 
     return jsonify({
@@ -488,6 +500,7 @@ def recipe_recipes_update(id):
 
 @app.route('/api/recipe/recipes/<int:id>/', methods=['PATCH'])
 def recipe_recipes_partial_update(id):
+    print 'Route invoked: PATCH /api/recipe/recipes/<int:id>/'
     data = request.get_json()
 
     response = {
@@ -505,10 +518,12 @@ def recipe_recipes_partial_update(id):
 
 @app.route('/api/recipe/recipes/<int:id>/', methods=['DELETE'])
 def recipe_recipes_destroy(id):
+    print 'Route invoked: DELETE /api/recipe/recipes/<int:id>/'
     return '', 204
 
 @app.route('/api/recipe/recipes/<int:id>/upload-image/', methods=['POST'])
 def recipe_recipes_upload_image(id):
+    print 'Route invoked: POST /api/recipe/recipes/<int:id>/upload-image/'
     return jsonify({
         'id': id,
         'image': 'http://example.com/image.jpg'
@@ -516,6 +531,7 @@ def recipe_recipes_upload_image(id):
 
 @app.route('/api/recipe/ingredients/', methods=['GET'])
 def recipe_ingredients_list():
+    print 'Route invoked: GET /api/recipe/ingredients/'
     assigned_only = request.args.get('assigned_only')
 
     conn = get_db_connection()
@@ -529,6 +545,7 @@ def recipe_ingredients_list():
 
 @app.route('/api/recipe/ingredients/<int:id>/', methods=['PUT'])
 def recipe_ingredients_update(id):
+    print 'Route invoked: PUT /api/recipe/ingredients/<int:id>/'
     data = request.get_json()
 
     return jsonify({
@@ -538,6 +555,7 @@ def recipe_ingredients_update(id):
 
 @app.route('/api/recipe/ingredients/<int:id>/', methods=['PATCH'])
 def recipe_ingredients_partial_update(id):
+    print 'Route invoked: PATCH /api/recipe/ingredients/<int:id>/'
     data = request.get_json()
 
     return jsonify({
@@ -547,10 +565,12 @@ def recipe_ingredients_partial_update(id):
 
 @app.route('/api/recipe/ingredients/<int:id>/', methods=['DELETE'])
 def recipe_ingredients_destroy(id):
+    print 'Route invoked: DELETE /api/recipe/ingredients/<int:id>/'
     return '', 204
 
 @app.route('/api/recipe/tags/', methods=['GET'])
 def recipe_tags_list():
+    print 'Route invoked: GET /api/recipe/tags/'
     assigned_only = request.args.get('assigned_only')
 
     conn = get_db_connection()
@@ -564,6 +584,7 @@ def recipe_tags_list():
 
 @app.route('/api/recipe/tags/<int:id>/', methods=['PUT'])
 def recipe_tags_update(id):
+    print 'Route invoked: PUT /api/recipe/tags/<int:id>/'
     data = request.get_json()
 
     return jsonify({
@@ -573,6 +594,7 @@ def recipe_tags_update(id):
 
 @app.route('/api/recipe/tags/<int:id>/', methods=['PATCH'])
 def recipe_tags_partial_update(id):
+    print 'Route invoked: PATCH /api/recipe/tags/<int:id>/'
     data = request.get_json()
 
     return jsonify({
@@ -582,6 +604,7 @@ def recipe_tags_partial_update(id):
 
 @app.route('/api/recipe/tags/<int:id>/', methods=['DELETE'])
 def recipe_tags_destroy(id):
+    print 'Route invoked: DELETE /api/recipe/tags/<int:id>/'
     return '', 204
 
 if __name__ == '__main__':
