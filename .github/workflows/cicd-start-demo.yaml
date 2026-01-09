@@ -57,6 +57,7 @@ jobs:
       - name: Create .env file
         run: |
           echo "GREETING=Hello from Github Action" >> .env
+          echo "DOCKER_GITHUB_USERNAME=${{ env.DOCKER_GITHUB_USERNAME }}" >> .env
 
 
       - name: Transfer .env file to server
@@ -79,8 +80,9 @@ jobs:
       - name: Deploy to server
         run: |
           ssh -i ~/.ssh/ssh_key -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST << "EOF"
-            sudo docker compose pull
-            sudo docker compose up -d
+            cd ~
+            docker compose pull
+            docker compose up -d
           EOF
         env:
           SSH_USER: ${{ secrets.SSH_USER }}
