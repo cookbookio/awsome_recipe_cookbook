@@ -1,0 +1,19 @@
+# Example Terraform variables file
+# Copy this file to terraform.tfvars and customize the values
+
+# Azure Resource Group
+resource_group_name = "recipe-cookbook-rg"
+
+# Azure Region (westeurope, northeurope, eastus, etc.)
+location = "westeurope"
+
+# Resource name prefix
+prefix = "recipe-cookbook"
+
+# Virtual Machine settings
+vm_name        = "recipe-cookbook-vm"
+vm_size        = "Standard_B1s"  # Options: Standard_B1s, Standard_B2s
+admin_username = "azureuser"
+
+# SSH public key path
+ssh_public_key_path = "~/.ssh/id_rsa.pub"
