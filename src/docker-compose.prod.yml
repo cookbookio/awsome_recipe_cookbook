@@ -1,6 +1,6 @@
 services:
   web:
-    image: ghcr.io/${DOCKER_GITHUB_USERNAME}/awsome-recipe-cookbook:latest
+    image: ghcr.io/cookbookio/awsome-recipe-cookbook:latest
     build:
       context: .
       dockerfile: Dockerfile
