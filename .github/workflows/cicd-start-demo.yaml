@@ -30,7 +30,7 @@ jobs:
       working-directory: ./src
       run: |
         export DOCKER_GITHUB_USERNAME=${{ env.DOCKER_GITHUB_USERNAME }}
-        docker buildx bake --allow=fs.read=.. -f docker-compose.prod.yml --set *.platform=linux/amd64,linux/arm64 --push
+        docker buildx bake -f docker-compose.prod.yml --set *.platform=linux/amd64,linux/arm64 --push
 
 
   deploy:
