@@ -7,6 +7,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+# Copy legacy folder from project root to app folder
+COPY ../legacy ../legacy
+
 # Make startup script executable
 RUN chmod +x start.sh
 
