@@ -141,8 +141,7 @@ resource "azurerm_linux_virtual_machine" "main" {
   resource_group_name             = azurerm_resource_group.main.name
   size                            = var.vm_size
   admin_username                  = var.admin_username
-  admin_password                  = var.admin_password != "" ? var.admin_password : null
-  disable_password_authentication = !var.enable_password_authentication
+  disable_password_authentication = true
 
   network_interface_ids = [
     azurerm_network_interface.main.id,

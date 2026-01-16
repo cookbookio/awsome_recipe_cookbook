@@ -17,8 +17,3 @@ admin_username = "azureuser"
 
 # SSH public key path
 ssh_public_key_path = "~/.ssh/id_rsa.pub"
-
-# Password authentication (optional)
-# Enable both SSH key and password authentication
-enable_password_authentication = true
-admin_password = "YourSecurePassword123!"  # Change this to a strong password!
