@@ -48,10 +48,6 @@ jobs:
           mkdir -p ~/.ssh/
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/ssh_key
           chmod 600 ~/.ssh/ssh_key
-          echo "Line count in key file:"
-          wc -l ~/.ssh/ssh_key
-          echo "Key fingerprint:"
-          ssh-keygen -l -f ~/.ssh/ssh_key
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
@@ -63,9 +59,6 @@ jobs:
 
       - name: Transfer .env file to server
         run: |
-          echo "Testing SSH connection first..."
-          ssh -vvv -i ~/.ssh/ssh_key -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "echo 'SSH works'"
-          echo "Now transferring .env file..."
           scp -i ~/.ssh/ssh_key -o StrictHostKeyChecking=no .env $SSH_USER@$SSH_HOST:.env
         env:
           SSH_USER: ${{ secrets.SSH_USER }}
