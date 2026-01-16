@@ -79,6 +79,7 @@ jobs:
           ssh -i ~/.ssh/ssh_key -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST << "EOF"
             cd ~
             docker compose pull
+            docker compose down
             docker compose up -d
           EOF
         env:
