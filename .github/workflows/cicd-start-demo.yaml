@@ -47,9 +47,13 @@ jobs:
         run: |
           mkdir -p ~/.ssh/
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/ssh_key
-          echo "" >> ~/.ssh/ssh_key
           chmod 600 ~/.ssh/ssh_key
-          ssh-keygen -l -f ~/.ssh/ssh_key || echo "Key validation failed"
+          echo "Key fingerprint:"
+          ssh-keygen -l -f ~/.ssh/ssh_key
+          echo "First line:"
+          head -1 ~/.ssh/ssh_key
+          echo "Last line:"
+          tail -1 ~/.ssh/ssh_key
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
