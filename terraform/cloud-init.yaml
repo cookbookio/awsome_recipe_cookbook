@@ -44,13 +44,13 @@ runcmd:
   # Create legacy directory and download legacy files from GitHub
   - mkdir -p /home/${admin_username}/legacy/static /home/${admin_username}/legacy/templates
   - cd /home/${admin_username}/legacy
-  - curl -fsSL https://raw.githubusercontent.com/CookbookIO/awsome_recipe_cookbook/cicd-start-demo/legacy/api-schema.yaml -o api-schema.yaml
-  - curl -fsSL https://raw.githubusercontent.com/CookbookIO/awsome_recipe_cookbook/cicd-start-demo/legacy/app.py -o app.py
-  - curl -fsSL https://raw.githubusercontent.com/CookbookIO/awsome_recipe_cookbook/cicd-start-demo/legacy/requirements.txt -o requirements.txt
-  - curl -fsSL https://raw.githubusercontent.com/CookbookIO/awsome_recipe_cookbook/cicd-start-demo/legacy/static/style.css -o static/style.css
-  - curl -fsSL https://raw.githubusercontent.com/CookbookIO/awsome_recipe_cookbook/cicd-start-demo/legacy/templates/home.html -o templates/home.html
-  - curl -fsSL https://raw.githubusercontent.com/CookbookIO/awsome_recipe_cookbook/cicd-start-demo/legacy/templates/base.html -o templates/base.html
-  - curl -fsSL https://raw.githubusercontent.com/CookbookIO/awsome_recipe_cookbook/cicd-start-demo/legacy/templates/recipe_detail.html -o templates/recipe_detail.html
+  - curl -fsSL https://raw.githubusercontent.com/cookbookio/awsome_recipe_cookbook/cicd-start-demo/legacy/api-schema.yaml -o api-schema.yaml
+  - curl -fsSL https://raw.githubusercontent.com/cookbookio/awsome_recipe_cookbook/cicd-start-demo/legacy/app.py -o app.py
+  - curl -fsSL https://raw.githubusercontent.com/cookbookio/awsome_recipe_cookbook/cicd-start-demo/legacy/requirements.txt -o requirements.txt
+  - curl -fsSL https://raw.githubusercontent.com/cookbookio/awsome_recipe_cookbook/cicd-start-demo/legacy/static/style.css -o static/style.css
+  - curl -fsSL https://raw.githubusercontent.com/cookbookio/awsome_recipe_cookbook/cicd-start-demo/legacy/templates/home.html -o templates/home.html
+  - curl -fsSL https://raw.githubusercontent.com/cookbookio/awsome_recipe_cookbook/cicd-start-demo/legacy/templates/base.html -o templates/base.html
+  - curl -fsSL https://raw.githubusercontent.com/cookbookio/awsome_recipe_cookbook/cicd-start-demo/legacy/templates/recipe_detail.html -o templates/recipe_detail.html
   - chown -R ${admin_username}:${admin_username} /home/${admin_username}/legacy
 
 write_files:
