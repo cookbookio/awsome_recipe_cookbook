@@ -15,5 +15,11 @@ vm_name        = "recipe-cookbook-vm"
 vm_size        = "Standard_B1s"  # Options: Standard_B1s, Standard_B2s
 admin_username = "azureuser"
 
-# SSH public key path
+# Authentication settings
+# SSH public key path (recommended)
 ssh_public_key_path = "~/.ssh/id_rsa.pub"
+
+# Optional: Password authentication (SSH keys are recommended for security)
+# Uncomment and set a password if you want to enable password login
+# Password must be at least 12 characters long
+# admin_password = "YourSecurePassword123!"
