@@ -2,13 +2,13 @@ FROM python:3.13-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY src/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY src/ .
 
 # Copy legacy folder from project root to app folder
-COPY ../legacy ../legacy
+COPY legacy/ ../legacy/
 
 # Make startup script executable
 RUN chmod +x start.sh

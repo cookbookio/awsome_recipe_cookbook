@@ -2,8 +2,8 @@ services:
   web:
     image: ghcr.io/cookbookio/awsome-recipe-cookbook:latest
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: src/Dockerfile
     ports:
       - "5001:5001"
     environment:
