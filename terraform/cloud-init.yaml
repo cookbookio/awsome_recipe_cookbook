@@ -41,6 +41,11 @@ runcmd:
   - mkdir -p /home/${admin_username}/app
   - chown ${admin_username}:${admin_username} /home/${admin_username}/app
 
+  # Enable password authentication in SSH (while keeping key auth)
+  - sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+  - sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+  - systemctl restart sshd
+
 write_files:
   - path: /etc/motd
     content: |

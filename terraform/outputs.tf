@@ -45,3 +45,22 @@ output "app_url" {
   description = "URL to access the application"
   value       = "http://${azurerm_public_ip.main.ip_address}"
 }
+
+output "password_authentication_enabled" {
+  description = "Whether password authentication is enabled"
+  value       = var.enable_password_authentication
+}
+
+output "login_instructions" {
+  description = "How to login to the VM"
+  value = var.enable_password_authentication ? join("\n", [
+    "You can login with either:",
+    "",
+    "1. SSH Key (recommended):",
+    "   ssh ${var.admin_username}@${azurerm_public_ip.main.ip_address}",
+    "",
+    "2. Password:",
+    "   ssh ${var.admin_username}@${azurerm_public_ip.main.ip_address}",
+    "   Password: (the one you set in terraform.tfvars)"
+  ]) : "ssh ${var.admin_username}@${azurerm_public_ip.main.ip_address}"
+}

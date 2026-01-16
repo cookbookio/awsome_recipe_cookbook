@@ -63,3 +63,16 @@ variable "ssh_public_key_path" {
   type        = string
   default     = "~/.ssh/id_rsa.pub"
 }
+
+variable "admin_password" {
+  description = "Admin password for the VM (optional, for password authentication)"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "enable_password_authentication" {
+  description = "Enable password authentication (SSH keys will still work)"
+  type        = bool
+  default     = true
+}
