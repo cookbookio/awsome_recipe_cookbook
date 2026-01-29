@@ -1,3 +1,6 @@
+![GitHub Actions](https://github.com/cookbookio/awsome_recipe_cookbook/actions/workflows/cicd-start-demo.yaml/badge.svg?branch=cicd-start-demo)
+
+
 # Awsome recipe cookbook
 ### Demo DevOps repository for use in teachings in It-architechture, cloud and agil udvikling at EK ITA Spring 2026
 
