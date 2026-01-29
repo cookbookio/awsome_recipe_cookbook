@@ -14,11 +14,3 @@ This is the "Awsome recipe cookbook" repository. It is not meant for production 
 
 ---
 ## ⚠️  SECURITY VULNERABILITIES - EDUCATIONAL PURPOSE ONLY ⚠️
-
-# My Project
-
-[![GitHub Actions](https://github.com/cookbookio/awsome_recipe_cookbook/actions/workflows/ci.yml/badge.svg?branch=cicd-start-demo)](https://github.com/cookbookio/awsome_recipe_cookbook/actions)
-[![License](https://img.shields.io/github/license/cookbookio/awsome_recipe_cookbook)](LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/cookbookio/awsome_recipe_cookbook)](https://github.com/awsome_recipe_cookbook/awsome_recipe_cookbook/stargazers)
-[![Codecov](https://img.shields.io/codecov/c/github/cookbookio/awsome_recipe_cookbook)](https://codecov.io/gh/awsome_recipe_cookbook/awsome_recipe_cookbook)
-[![GitHub release](https://img.shields.io/github/v/release/cookbookio/awsome_recipe_cookbook)](https://github.com/awsome_recipe_cookbook/awsome_recipe_cookbook/releases)
